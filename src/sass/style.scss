@@ -10,8 +10,10 @@ $greenColorHover: #4db6ac;
 
 
 .card {
-  width: 550px;
+  width: 100%;
+  max-width: 500px;
   margin: 0 auto;
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.32), 0 2px 10px 0 rgba(0, 0, 0, 0.24);
 }
 
 #output {
@@ -19,7 +21,7 @@ $greenColorHover: #4db6ac;
   height: 50px;
   padding: 8px;
   border-radius: 2px;
-  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 0px 10px 0 rgba(0, 0, 0, 0.32), 0 2px 10px 0 rgba(0, 0, 0, 0.24);
   direction: rtl;
   font-size: 2.5em;
   line-height: 1;
@@ -40,6 +42,10 @@ $greenColorHover: #4db6ac;
   width: 100%;
 }
 
+.numpad:last-child {
+  max-width: 50px;
+}
+
 .numpad:not(:last-child){
   margin-right: 10px;
 }
@@ -56,25 +62,27 @@ $greenColorHover: #4db6ac;
   background-color: $whiteColorHover;
 }
 
-.numpad:last-child > .btn {
+.numpad:nth-child(4) > .btn {
   color: $whiteColor;
   background-color: $blueColor;
 }
 
-.numpad:last-child > .btn:hover, 
-.numpad:last-child > .btn:focus, 
-.numpad:last-child > .btn:active {
+.numpad:nth-child(4) > .btn:hover, 
+.numpad:nth-child(4) > .btn:focus, 
+.numpad:nth-child(4) > .btn:active {
   color: $whiteColor;
   background-color: $blueColorHover;
 }
 
-.numpad:nth-child(3) > .btn:last-child {
+.numpad:last-child > .btn{
   background-color: $greenColor;
   color: $whiteColor;
+  height: 100%;
+  padding: 0px;
 }
 
-.numpad:nth-child(3) > .btn:last-child:hover,
-.numpad:nth-child(3) > .btn:last-child:active,
-.numpad:nth-child(3) > .btn:last-child:focus {
+.numpad:last-child > .btn:hover,
+.numpad:last-child > .btn:active,
+.numpad:last-child > .btn:focus {
   background-color: $greenColorHover;
 }

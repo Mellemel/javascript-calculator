@@ -8,25 +8,29 @@ const Numpad = (props) => {
         <Button>7</Button>
         <Button>4</Button>
         <Button>1</Button>
-        <Button>0</Button>
       </div>
       <div className="numpad">
         <Button>8</Button>
         <Button>5</Button>
         <Button>2</Button>
-        <Button>&middot; </Button>
+        <Button>0</Button>
       </div>
       <div className="numpad">
         <Button>9</Button>
         <Button>6</Button>
         <Button>3</Button>
-        <Button>=</Button>
+        <Button>&middot; </Button>
+
       </div>
       <div className="numpad">
-        <Button>&divide;</Button>
-        <Button>&times;</Button>
+        <Button>&divide; </Button>
+        <Button>&times; </Button>
         <Button>-</Button>
         <Button>+</Button>
+      </div>
+      <div className="numpad">
+        <Button>c</Button>
+        <Button>=</Button>
       </div>
     </div>
   );

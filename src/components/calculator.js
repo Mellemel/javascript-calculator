@@ -7,17 +7,14 @@ class Calculator extends React.Component {
     this.state = {
       total: 0
     };
-    this.returnValue = this.returnValue.bind(this);
-  }
-  returnValue(e) {
-    console.log(e);
+    this.handleEvent = this.handleEvent.bind(this);
   }
   render() {
     return (
       <div className="card">
         <div className="card-content">
           <div id="output">{this.state.total}</div>
-          <Numpad onClick={this.returnValue} />
+          <Numpad onClick={this.handleEvent}/>
         </div>
       </div>
     );
