@@ -24,7 +24,13 @@ class Calculator extends React.Component {
     if (value >=0 || value <= 0){
       this.output(value);
     }
+    if (value == 'c') {
+      this.clear();
+    }
 
+  }
+  clear() {
+    this.setState({total: 0});
   }
   output(num) {
     console.log(num);
