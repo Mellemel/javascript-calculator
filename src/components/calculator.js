@@ -9,6 +9,29 @@ class Calculator extends React.Component {
     };
     this.handleEvent = this.handleEvent.bind(this);
   }
+  componentDidMount() {
+    document.addEventListener('keypress', this.handleEvent, false);
+  }
+
+  handleEvent(e) {
+    var value;
+    if (e.type === 'click') {
+      value = $(e.target).text();
+    }
+    if (e.type === 'keypress') {
+      value = String.fromCharCode(e.keyCode);
+    }
+    if (value >=0 || value <= 0){
+      this.output(value);
+    }
+
+  }
+  output(num) {
+    console.log(num);
+    let output = this.state.total ? this.state.total + '' + num : num;
+    output = parseInt(output);
+    this.setState({ total: output });
+  }
   render() {
     return (
       <div className="card">
