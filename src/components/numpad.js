@@ -19,12 +19,11 @@ const Numpad = (props) => {
         <Button>9</Button>
         <Button>6</Button>
         <Button>3</Button>
-        <Button>&middot; </Button>
-
+        <Button>&middot;</Button>
       </div>
       <div className="numpad">
-        <Button>&divide; </Button>
-        <Button>&times; </Button>
+        <Button>&divide;</Button>
+        <Button>&times;</Button>
         <Button>-</Button>
         <Button>+</Button>
       </div>
