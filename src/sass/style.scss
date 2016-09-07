@@ -41,6 +41,7 @@ body {
 .numpad {
   display: flex;
   flex-direction: column;
+  position: relative;
   width: 100%;
 }
 
@@ -79,9 +80,9 @@ body {
 }
 
 .numpad:last-child > .btn{
+  flex-grow: 1;
   background-color: $greenColor;
   color: $whiteColor;
-  height: 100%;
 }
 
 .numpad:last-child > .btn:hover,
