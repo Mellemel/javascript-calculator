@@ -4,45 +4,89 @@ import Numpad from './numpad';
 class Calculator extends React.Component {
   constructor() {
     super();
+    this.output = [''];
     this.state = {
-      total: 0
+      total: ''
     };
+
     this.handleEvent = this.handleEvent.bind(this);
   }
   componentDidMount() {
-    document.addEventListener('keypress', this.handleEvent, false);
+    document.addEventListener('keydown', this.handleEvent, false);
   }
 
   handleEvent(e) {
-    var value;
-    if (e.type === 'click') {
+    var value = '';
+    if (e.type == 'click') {
       value = $(e.target).text();
+
+      if (value === String.fromCharCode(215)) {
+        value = '*';
+      }
+      if (value == String.fromCharCode(247)) {
+        value = '/';
+      }
+      if (value == String.fromCharCode(183)) {
+        value = '.';
+      }
     }
-    if (e.type === 'keypress') {
-      value = String.fromCharCode(e.keyCode);
+    if (e.type == 'keydown') {
+      value = e.key;
+      if (value == 'Enter') {
+        value = '=';
+      }
     }
-    if (value >=0 || value <= 0){
-      this.output(value);
+    // Process numerical and period key presses for the first and third input
+    if (((value >= 0 && value < 10) || value == '.') && (this.output.length == 1 || this.output.length == 3)) {
+      this.setOutput(value);
+    }
+    // Process mathematical operation only if numbers are present in the current string
+    if ((value == '/' || value == '*' || value == '-' || value == '+') &&
+      (this.output[this.output.length - 1].length > 0)) {
+      this.setOperation(value);
+    }
+    // Process equal operation on the third input
+    if (value == '=' && this.output.length == 3 && this.output[this.output.length - 1].length > 0) {
+      this.equal();
     }
     if (value == 'c') {
       this.clear();
     }
-
+  }
+  setOperation(value) {
+    if (this.output.length == 3) {
+      this.equal();
+      this.setOperation(value);
+    } else {
+      console.log(this.output);
+      this.output.push('');
+      this.setOutput(value);
+      this.output.push('');
+      console.log(this.output);
+    }
+  }
+  setOutput(value) {
+    if (value == '.' && this.output[this.output.length - 1].indexOf(value) > 0) {
+      return;
+    }
+    this.output[this.output.length - 1] += value;
+    let total = this.output.join('');
+    this.setState({ total: total });
+  }
+  equal() {
+    let total = '' + eval(this.output.join(''));
+    this.output = [total];
+    this.setState({ total: total });
   }
   clear() {
-    this.setState({total: 0});
-  }
-  output(num) {
-    console.log(num);
-    let output = this.state.total ? this.state.total + '' + num : num;
-    output = parseInt(output);
-    this.setState({ total: output });
+    this.output = [''];
+    this.setState({ total: '' });
   }
   render() {
     return (
       <div className="card">
         <div className="card-content">
-          <div id="output">{this.state.total}</div>
+          <div id="output"><bdi>{this.state.total}</bdi></div>
           <Numpad onClick={this.handleEvent}/>
         </div>
       </div>
