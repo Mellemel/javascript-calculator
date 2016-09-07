@@ -37,7 +37,9 @@ class Calculator extends React.Component {
       }
     }
     // Process numerical and period key presses for the first and third input
-    if (((value >= 0 && value < 10) || value == '.') && (this.output.length == 1 || this.output.length == 3)) {
+    if (((value >= 0 && value < 10) || value == '.') &&
+      (this.output.length == 1 || this.output.length == 3) &&
+      this.output[this.output.length - 1].length < 20) {
       this.setOutput(value);
     }
     // Process mathematical operation only if numbers are present in the current string
