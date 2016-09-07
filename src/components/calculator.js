@@ -58,11 +58,9 @@ class Calculator extends React.Component {
       this.equal();
       this.setOperation(value);
     } else {
-      console.log(this.output);
       this.output.push('');
       this.setOutput(value);
       this.output.push('');
-      console.log(this.output);
     }
   }
   setOutput(value) {
@@ -74,7 +72,7 @@ class Calculator extends React.Component {
     this.setState({ total: total });
   }
   equal() {
-    let total = '' + eval(this.output.join(''));
+    let total = '' + Math.round(eval(this.output.join('')) * 1000) / 1000;
     this.output = [total];
     this.setState({ total: total });
   }
